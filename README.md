@@ -1,5 +1,9 @@
 # FlickrPhotoSearch
-This project requires .Net 4.8 Framework to be installed.
-Visual Studio 2015 to compile 
 
-Project can be open with solution file ~\FlickrApp\FlickrApp.sln
+Dependency 
+
+.NetFramework version 4.8.
+
+Visual Studio 2015 to compile the source code
+
+Project can be opened with solution file ~\FlickrApp\FlickrApp.sln
