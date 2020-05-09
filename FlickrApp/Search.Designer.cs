@@ -33,6 +33,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.panelSearchResult = new System.Windows.Forms.FlowLayoutPanel();
             this.gbSearch = new System.Windows.Forms.GroupBox();
+            this.lblImageResult = new System.Windows.Forms.Label();
             this.lblErrorMessage = new System.Windows.Forms.Label();
             this.gbSearch.SuspendLayout();
             this.SuspendLayout();
@@ -72,15 +73,26 @@
             // 
             // gbSearch
             // 
+            this.gbSearch.Controls.Add(this.lblImageResult);
             this.gbSearch.Controls.Add(this.lblErrorMessage);
             this.gbSearch.Controls.Add(this.txtSearchBox);
             this.gbSearch.Controls.Add(this.btnSearch);
             this.gbSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbSearch.Location = new System.Drawing.Point(0, 0);
             this.gbSearch.Name = "gbSearch";
-            this.gbSearch.Size = new System.Drawing.Size(1390, 80);
+            this.gbSearch.Size = new System.Drawing.Size(1390, 97);
             this.gbSearch.TabIndex = 4;
             this.gbSearch.TabStop = false;
+            // 
+            // lblImageResult
+            // 
+            this.lblImageResult.AutoSize = true;
+            this.lblImageResult.Location = new System.Drawing.Point(50, 74);
+            this.lblImageResult.Name = "lblImageResult";
+            this.lblImageResult.Size = new System.Drawing.Size(86, 17);
+            this.lblImageResult.TabIndex = 4;
+            this.lblImageResult.Text = "ImageResult";
+            this.lblImageResult.Visible = false;
             // 
             // lblErrorMessage
             // 
@@ -116,6 +128,7 @@
         private System.Windows.Forms.FlowLayoutPanel panelSearchResult;
         private System.Windows.Forms.GroupBox gbSearch;
         private System.Windows.Forms.Label lblErrorMessage;
+        private System.Windows.Forms.Label lblImageResult;
     }
 }
 

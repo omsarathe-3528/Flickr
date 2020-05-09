@@ -19,8 +19,10 @@ namespace FlickrApp
             {
                 InitializeComponent();
 
-                lblErrorMessage.Text = string.Empty;
+                lblImageResult.Visible = true;
                 lblErrorMessage.Visible = true;
+                lblImageResult.Text = string.Empty;
+                lblErrorMessage.Text = string.Empty;
 
                 _flickrSearchRequest = new FlickrSearchRequest();
                 _flickrSearchService = new FlickrSearchService(_flickrSearchRequest);
@@ -39,6 +41,8 @@ namespace FlickrApp
         private void btnSearch_Click(object sender, EventArgs e)
         {
             lblErrorMessage.Text = string.Empty;
+            lblImageResult.Text = string.Empty;
+
             if (!string.IsNullOrEmpty(txtSearchBox.Text))
             {
                 //Cancel image download if the background thread is still working
@@ -133,13 +137,26 @@ namespace FlickrApp
 
             FlickrSearchResponse response = await _flickrSearchService.GetServiceResponse();
 
-            if (response != null && response.stat == Constants.SEARCH_FAIL)
+            bwDownloadImages.RunWorkerAsync(response);
+
+            if (response != null)
             {
-                lblErrorMessage.Text = response.message;
-            }
-            else
-            {
-                bwDownloadImages.RunWorkerAsync(response);
+                if (response.stat == Constants.SEARCH_OK)
+                {
+                    if (response.photos != null && response.photos.total == 0)
+                    {
+                        lblImageResult.Text = "No record found!";
+                    }
+                    else
+                    {
+                        lblImageResult.Text = "Images for " + _flickrSearchRequest.Tags;
+                    }
+                }
+                else
+                {
+                    lblErrorMessage.Text = response.message;
+                    lblImageResult.Text = string.Empty;
+                }
             }
         }
     }
